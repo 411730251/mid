@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* 淺藍色背景 */
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #0056b3;
+    text-shadow: 0 0 5px #00e6e6, 0 0 10px #00e6e6, 0 0 20px #00e6e6, 
+                 0 0 40px #00cccc, 0 0 80px #00cccc, 0 0 90px #00cccc;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul > li:first-child {
+    flex-basis: 100%; /* 獨占一行 */
+    text-align: center;
+    margin-bottom: 20px; /* 與下方按鈕群組分隔 */
+}
+
+ul > li:first-child > a {
+    animation: spin 2s linear infinite; /* 自我介紹按鈕持續旋轉 */
+}
+
+ul > li:first-child > a:hover {
+    animation: none; /* 滑鼠移入時停止旋轉 */
+}
+
+ul > li:not(:first-child) {
+    flex-basis: calc(50% - 30px); /* 每行兩個按鈕，間距 30px */
+    margin: 10px 15px;
+    text-align: center;
+}
+
+ul > li {
+    margin: 10px 15px;
+    text-align: center;
+}
+
+ul > li > a {
+    text-decoration: none;
+    color: #0056b3;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s ease; /* 增加放大效果的過渡 */
+    border: 2px solid #0056b3; /* 框線 */
+    padding: 5px 15px; /* 減少內距 */
+    border-radius: 5px; /* 圓角 */
+    background-color: #ffffff; /* 白色背景 */
+    position: relative; /* 為細緞帶效果設定基準 */
+    overflow: hidden; /* 隱藏超出範圍的細緞帶 */
+    border-width: 1px; /* 縮小框線寬度 */
+    animation: spin 2s linear infinite; /* 持續旋轉 */
+}
+
+ul > li > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* 白色細緞帶 */
+    transform: skewX(-45deg); /* 傾斜細緞帶 */
+    transition: left 0.3s ease; /* 平滑移動效果 */
+}
+
+ul > li > a:hover::before {
+    left: 100%; /* 滑鼠移動時細緞帶從左到右移動 */
+}
+
+ul > li > a:hover {
+    color: #ffffff; /* 文字變白 */
+    background-color: #ff5722; /* 反白效果 */
+    transform: scale(1.1); /* 放大按鈕 */
+    animation: spin 2s ease-out; /* 滑鼠移入時慢慢停下 */
+    pointer-events: auto; /* 恢復滑鼠事件 */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg); /* 起始角度 */
+    }
+    to {
+        transform: rotate(360deg); /* 完整旋轉一圈 */
+    }
+}
+
+@keyframes rotateCard {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(360deg);
+    }
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#rotatingText {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+    margin: 20px 0;
+    height: 30px; /* 固定高度避免跳動 */
+    transition: opacity 1s ease; /* 漸層效果 */
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+side-menu a:hover {
+    background-color: #575757;
+}
+
+.side-menu .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-btn {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: #333;
+    z-index: 2;
+    background: linear-gradient(90deg, #ffffff, #e0e0e0, #ffffff); /* 光澤漸層 */
+    background-size: 200% 100%;
+    animation: shine 2s infinite linear; /* 光澤動畫 */
+    border: 2px solid #333; /* 添加邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 5px 10px; /* 增加內距 */
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+#restartButton {
+    animation: blink 1s infinite; /* 添加閃爍動畫 */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* 完全可見 */
+    }
+    50% {
+        opacity: 0.5; /* 半透明 */
+    }
+}
+
+@keyframes borderBlink {
+    0%, 100% {
+        border-color: gold; /* 金色邊框 */
+    }
+    50% {
+        border-color: black; /* 黑色邊框 */
+    }
+}

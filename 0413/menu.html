@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期中作業報告</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>期中作業報告</h1>
+    <div id="rotatingText"></div> <!-- 新增輪流顯示文字的容器 -->
+
+    <!-- 側開式選單 -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
+        <a href="javascript:void(0)" onclick="showIntroduction()">自我介紹</a>
+        <a href="https://hackmd.io/@win0620/B1nI5cI2Jg" target="_blank">本學期作品集</a>
+        <a href="https://youtu.be/6EooWr_TBOU?si=sba-xIFDHi3aphby" target="_blank">測驗卷</a>
+        <a href="https://www.youtube.com/watch?v=MeglK5e30tc" target="_blank">教學影片</a>
+    </div>
+    <span class="menu-btn" onclick="openMenu()">&#9776; 開啟選單</span>
+
+    <canvas id="animationCanvas" width="800" height="600" style="border:1px solid #000;"></canvas>
+    <button id="restartButton" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" onclick="resetGame()">再玩一次</button>
+    <script src="animation.js"></script>
+    <script src="rotatingText.js"></script>
+    <script src="sideMenu.js"></script> <!-- 新增的 JavaScript 檔案 -->
+    <script src="introductionPopup.js"></script> <!-- 恢復此行 -->
+    <script src="popup.js"></script> <!-- 引入新的 JavaScript 檔案 -->
+</body>
+</html>
